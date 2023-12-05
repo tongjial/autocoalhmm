@@ -18,34 +18,35 @@ species3 = sys.argv[3]
 species4 = sys.argv[4]
 target_seqname = sys.argv[5]
 big_maf_file = '../../'+sys.argv[6]
+prefix = sys.argv[7]
 param_lst = [path, species1, species2, species3, species4, target_seqname, big_maf_file]
-if len(sys.argv) == 9:
-    param_lst.append(sys.argv[7])
+if len(sys.argv) == 10:
     param_lst.append(sys.argv[8])
-elif len(sys.argv) == 8:
-    param_lst.append(sys.argv[7])
+    param_lst.append(sys.argv[9])
+elif len(sys.argv) == 9:
+    param_lst.append(sys.argv[8])
 
 # If the temporary directory exists
-if os.path.isdir('./tmp/'):
+if os.path.isdir('./'+prefix):
     # Exit the script with warning message.
-    sys.exit('Please, change directory or delete tmp.')
+    sys.exit('Please, change directory or delete directory '+prefix)
 
 print('Loading...')
 
 # Copy temporary directory to current path
-shutil.copytree(path+'/tmp/', './tmp/')
+shutil.copytree(path+'/tmp/', './'+prefix)
 
 # Save the arguments on a pickle list
-with open('./tmp/params.pickle', 'wb') as f:
+with open('./'+prefix+'/params.pickle', 'wb') as f:
     pickle.dump(param_lst, f)
 
 # Change directory and run the filtering gwf workflow
-os.chdir('./tmp/filter/')
+os.chdir('./'+prefix+'/filter/')
 subprocess.call(['gwf', 'config', 'set', 'backend', 'slurm'])
 subprocess.call(['gwf', 'run'])
 
-with open('../../call.txt', 'w') as f:
-    f.write(" ".join(sys.argv))
+#with open('../../call.txt', 'w') as f:
+#    f.write(" ".join(sys.argv))
 
 # Print success
 print('Success!')
