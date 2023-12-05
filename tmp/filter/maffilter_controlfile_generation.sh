@@ -5,7 +5,7 @@
 ### and the target seqname
 
 echo "input.file=$1" > ../control_file
-echo "input.file.compression=gzip" >> ../control_file
+echo "input.file.compression=none" >> ../control_file
 echo "input.format=Maf" >> ../control_file
 echo "maf.filter=Subset(species=($2, $3, $4, $5), strict=yes, keep=no, remove_duplicates=yes), \\" >> ../control_file
 echo "XFullGap(species=($2, $3, $4, $5)), \\" >> ../control_file
