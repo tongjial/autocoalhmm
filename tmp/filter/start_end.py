@@ -59,7 +59,7 @@ def start_end(alignment, target_seqname, window_size):
 
 
 # Load parameters
-window_size = 1000000
+window_size = 900000
 if len(pickle.load(open('../params.pickle', 'rb'))) == 7:
 	with open('../params.pickle', 'rb') as f:
 		[path, species1, species2, species3, species4, target_seqname, big_maf_file] = pickle.load(f)
