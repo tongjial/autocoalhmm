@@ -38,13 +38,13 @@ def start_end(alignment, target_seqname, window_size):
 	sz = size[0]
 	j = 0
 	# For each index
-	for i in range(1, len(start)):
+	for i in range(0, len(start)):
 		# If the index is not the last one
 		if i < (len(start)-1):
 			# If the size is smaller than the window size
-			if sz+size[i] < window_size:
+			if sz+size[i+1] < window_size:
 				# Update the accumulated size
-				sz += size[i]
+				sz += size[i+1]
 			# If the size is larger than the window size
 			else:
 				# Append start and end coordinates
