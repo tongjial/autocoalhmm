@@ -58,7 +58,7 @@ gwf.target('Start_end',
            inputs=['../filtered.maf'], 
 		   outputs=['../slice_lst.pickle', '../filtered.mafindex'],
 		   cores=4,
-    	   memory='16g',
+		   memory='16g',
 		   walltime= '04:00:00',
 		   account='Primategenomes') << """
 python3 start_end.py
@@ -69,7 +69,7 @@ gwf.target('coalHMM_test',
            inputs=['../filtered.maf', '../slice_lst.pickle', '../filtered.mafindex'], 
 		   outputs=['../params.file'],
 		   cores=1,
-    	   memory='1g',
+		   memory='2g',
 		   walltime= '00:10:00',
 		   account='Primategenomes') << """
 cd ../test_coalhmm/
