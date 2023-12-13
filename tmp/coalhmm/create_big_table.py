@@ -48,7 +48,7 @@ target_seqname = sys.argv[1]
 
 slice_lst = pickle.load(open('../slice_lst.pickle', 'rb'))
 
-store = pd.HDFStore('../../final_table.HDF', complib='blosc')
+store = pd.HDFStore('../final_table.HDF', complib='blosc')
 
 for run in range(len(slice_lst)):
     # Load the info table with the coordinates and the gap information
