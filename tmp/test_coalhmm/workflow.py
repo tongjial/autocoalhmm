@@ -106,7 +106,7 @@ gwf.target('send_coalhmm',
             outputs=['../final_table.HDF'],
             cores=2,
             memory='4g',
-            walltime= '48:00:00',
+            walltime= '96:00:00',
 	        account='Primategenomes') << """
 cd ../coalhmm/
 gwf config set backend slurm
