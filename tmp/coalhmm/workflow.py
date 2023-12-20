@@ -99,7 +99,7 @@ for run in range(len(slice_lst)):
 
 gwf.target('final_table', 
             inputs=['../results/run_{}.HDF'.format(i) for i in range(len(slice_lst))], 
-            outputs=['../../final_table.HDF'],
+            outputs=['../final_table.HDF'],
             cores=4,
             memory='32g',
             account='Primategenomes') << """
