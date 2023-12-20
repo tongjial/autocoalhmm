@@ -54,8 +54,7 @@ for run in [0, 1, 2]:
                 outputs=outputs_test,
                 cores=4,
                 memory='4g',
-                walltime= '02:00:00',
-	        account='Primategenomes') << """
+	            account='Primategenomes') << """
     python create_fasta_and_info_table.py {} {} {}
     """.format(run, slice_lst[run][0], slice_lst[run][1])
 
@@ -70,10 +69,9 @@ for run in [0, 1, 2]:
     # Run coalhmm
     gwf.target('coalhmm_run_{}'.format(run), 
                 inputs=outputs_test, 
-                outputs=results,
+                outputs=results, 
                 cores=4, 
                 memory='4g', 
-                walltime= '06:00:00',
                 account='Primategenomes') << """
     export LD_LIBRARY_PATH=.
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/local/bpp/dev/lib64
@@ -96,8 +94,7 @@ gwf.target('new_params',
             outputs=['../params.file'],
             cores=1,
             memory='4g',
-            walltime= '00:10:00',
-	    account='Primategenomes') << """
+	        account='Primategenomes') << """
 python retrieve_params.py
 """
 
@@ -106,8 +103,7 @@ gwf.target('send_coalhmm',
             outputs=['../../final_table.HDF'],
             cores=4,
             memory='4g',
-            walltime= '04:00:00',
-	    account='Primategenomes') << """
+	        account='Primategenomes') << """
 cd ../coalhmm/
 gwf config set backend slurm
 gwf run
