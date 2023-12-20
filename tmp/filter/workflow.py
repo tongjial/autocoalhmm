@@ -33,6 +33,7 @@ if is_target:
 			outputs=['../filtered.maf'],
 			cores=8,
 			memory='16g',
+			walltime= '48:00:00',
 			account='Primategenomes') << """
 	./maffilter_controlfile_generation.sh {} {} {} {} {} {}
 	{} {} {} {} {} {} {}
@@ -45,6 +46,7 @@ else:
 			outputs=['../filtered.maf'],
 			cores=8,
 			memory='16g',
+			walltime= '48:00:00',
 			account='Primategenomes') << """
 	./maffilter_controlfile_generation_2.sh {} {} {} {} {} {}
 	{} {} {} {} {} {} {}
@@ -57,6 +59,7 @@ gwf.target('Start_end',
 		   outputs=['../slice_lst.pickle', '../filtered.mafindex'],
 		   cores=4,
 		   memory='16g',
+		   walltime= '48:00:00',
 		   account='Primategenomes') << """
 python3 start_end.py
 """
@@ -67,6 +70,7 @@ gwf.target('coalHMM_test',
 		   outputs=['../params.file'],
 		   cores=1,
 		   memory='2g',
+		   walltime= '48:00:00',
 		   account='Primategenomes') << """
 cd ../test_coalhmm/
 gwf config set backend slurm
