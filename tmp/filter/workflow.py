@@ -31,8 +31,8 @@ if is_target:
 	gwf.target('Maffilter', 
 			inputs=[big_maf_file], 
 			outputs=['../filtered.maf'],
-			cores=8,
-			memory='16g',
+			cores=4,
+			memory='12g',
 			walltime= '48:00:00',
 			account='Primategenomes') << """
 	./maffilter_controlfile_generation.sh {} {} {} {} {} {}
@@ -44,8 +44,8 @@ else:
 	gwf.target('Maffilter_2', 
 			inputs=[big_maf_file], 
 			outputs=['../filtered.maf'],
-			cores=8,
-			memory='16g',
+			cores=4,
+			memory='12g',
 			walltime= '48:00:00',
 			account='Primategenomes') << """
 	./maffilter_controlfile_generation_2.sh {} {} {} {} {} {}
@@ -58,7 +58,7 @@ gwf.target('Start_end',
            inputs=['../filtered.maf'], 
 		   outputs=['../slice_lst.pickle', '../filtered.mafindex'],
 		   cores=4,
-		   memory='16g',
+		   memory='12g',
 		   walltime= '48:00:00',
 		   account='Primategenomes') << """
 python3 start_end.py

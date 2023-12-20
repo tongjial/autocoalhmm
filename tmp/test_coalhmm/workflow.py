@@ -52,7 +52,7 @@ for run in [0, 1, 2]:
     gwf.target('run_{}'.format(run), 
                 inputs=inputs_test, 
                 outputs=outputs_test,
-                cores=4,
+                cores=2,
                 memory='4g',
                 walltime= '48:00:00',
 	            account='Primategenomes') << """
@@ -71,7 +71,7 @@ for run in [0, 1, 2]:
     gwf.target('coalhmm_run_{}'.format(run), 
                 inputs=outputs_test, 
                 outputs=results, 
-                cores=4, 
+                cores=2, 
                 memory='4g', 
                 walltime= '48:00:00',
                 account='Primategenomes') << """
@@ -104,7 +104,7 @@ python retrieve_params.py
 gwf.target('send_coalhmm', 
             inputs=['../params.file'], 
             outputs=['../final_table.HDF'],
-            cores=4,
+            cores=2,
             memory='4g',
             walltime= '48:00:00',
 	        account='Primategenomes') << """

@@ -51,7 +51,7 @@ for run in range(len(slice_lst)):
     gwf.target('run_{}'.format(run), 
                 inputs=inputs, 
                 outputs=outputs,
-                cores=4,
+                cores=2,
                 memory='4g',
                 walltime= '48:00:00',
 	            account='Primategenomes') << """
@@ -70,7 +70,7 @@ for run in range(len(slice_lst)):
     gwf.target('coalhmm_run_{}'.format(run), 
                 inputs=outputs, 
                 outputs=results,
-                cores=4, 
+                cores=2, 
                 memory='4g', 
                 walltime= '48:00:00',
                 account='Primategenomes') << """
