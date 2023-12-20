@@ -100,7 +100,7 @@ python retrieve_params.py
 
 gwf.target('send_coalhmm', 
             inputs=['../params.file'], 
-            outputs=['../../final_table.HDF'],
+            outputs=['../final_table.HDF'],
             cores=4,
             memory='4g',
 	        account='Primategenomes') << """
