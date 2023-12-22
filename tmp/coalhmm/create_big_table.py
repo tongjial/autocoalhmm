@@ -52,7 +52,7 @@ store = pd.HDFStore('../final_table.HDF', complib='blosc')
 
 for run in range(len(slice_lst)):
     # Load the info table with the coordinates and the gap information
-    info_table = pd.read_csv('../info_tables/run_{}.csv'.format(run))
+    # info_table = pd.read_csv('../info_tables/run_{}.csv'.format(run))
     df = pd.read_hdf('../results/run_{}.HDF'.format(run))
     df = df[[target_seqname.split('.')[0],'V0','V1','V2','V3']]
     df = optimize_dataframe(df)

@@ -48,13 +48,13 @@ def start_end(alignment, target_seqname, window_size):
 			# If the size is larger than the window size
 			else:
 				# Append start and end coordinates
-				coord_lst.append((st, start[i]+size[i]-1, i-j))
+				coord_lst.append((st, start[i]+size[i]-1, i-j+1))
 				# Update the accumulated size and start position
 				st = start[i+1]
 				sz = size[i]
 				j = i+1
 		else:
-			coord_lst.append((st, start[i]+size[i]-1, i-j))
+			coord_lst.append((st, start[i]+size[i]-1, i-j+1))
 	return coord_lst
 
 
