@@ -51,7 +51,7 @@ def start_end(alignment, target_seqname, window_size):
 				coord_lst.append((st, start[i]+size[i]-1, i-j+1))
 				# Update the accumulated size and start position
 				st = start[i+1]
-				sz = size[i]
+				sz = size[i+1]
 				j = i+1
 		else:
 			coord_lst.append((st, start[i]+size[i]-1, i-j+1))
@@ -59,7 +59,7 @@ def start_end(alignment, target_seqname, window_size):
 
 
 # Load parameters
-window_size = 900000
+window_size = 1500000
 if len(pickle.load(open('../params.pickle', 'rb'))) == 7:
 	with open('../params.pickle', 'rb') as f:
 		[path, species1, species2, species3, species4, target_seqname, big_maf_file] = pickle.load(f)
