@@ -59,16 +59,16 @@ def start_end(alignment, target_seqname, window_size):
 
 
 # Load parameters
-window_size = 1500000
-if len(pickle.load(open('../params.pickle', 'rb'))) == 7:
+window_size = int(sys.argv[1])
+if len(pickle.load(open('../params.pickle', 'rb'))) == 8:
 	with open('../params.pickle', 'rb') as f:
-		[path, species1, species2, species3, species4, target_seqname, big_maf_file] = pickle.load(f)
-elif len(pickle.load(open('../params.pickle', 'rb'))) == 8:
-	with open('../params.pickle', 'rb') as f:
-		[path, species1, species2, species3, species4, target_seqname, big_maf_file, error_sp1] = pickle.load(f)
+		[path, species1, species2, species3, species4, target_seqname, big_maf_file, winsize] = pickle.load(f)
 elif len(pickle.load(open('../params.pickle', 'rb'))) == 9:
 	with open('../params.pickle', 'rb') as f:
-		[path, species1, species2, species3, species4, target_seqname, big_maf_file, error_sp1, error_sp2] = pickle.load(f)
+		[path, species1, species2, species3, species4, target_seqname, big_maf_file, winsize, error_sp1] = pickle.load(f)
+elif len(pickle.load(open('../params.pickle', 'rb'))) == 10:
+	with open('../params.pickle', 'rb') as f:
+		[path, species1, species2, species3, species4, target_seqname, big_maf_file, winsize, error_sp1, error_sp2] = pickle.load(f)
 
 # Load the alignment
 alignment = AlignIO.parse('../filtered.maf', 'maf')

@@ -18,13 +18,16 @@ species3 = sys.argv[3]
 species4 = sys.argv[4]
 target_seqname = sys.argv[5]
 big_maf_file = '../../'+sys.argv[6]
-prefix = sys.argv[7]
-param_lst = [path, species1, species2, species3, species4, target_seqname, big_maf_file]
-if len(sys.argv) == 10:
-    param_lst.append(sys.argv[8])
+winsize = sys.argv[7]
+prefix = sys.argv[8]
+param_lst = [path, species1, species2, species3, species4, target_seqname, big_maf_file, winsize]
+
+# If given two/one species error model
+if len(sys.argv) == 11:
     param_lst.append(sys.argv[9])
-elif len(sys.argv) == 9:
-    param_lst.append(sys.argv[8])
+    param_lst.append(sys.argv[10])
+elif len(sys.argv) == 10:
+    param_lst.append(sys.argv[9])
 
 # If the temporary directory exists
 if os.path.isdir('./'+prefix):
