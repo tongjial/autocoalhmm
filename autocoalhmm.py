@@ -10,6 +10,12 @@ import pickle
 import shutil
 import subprocess
 
+# check winsize
+def check_integer(number):
+    if number < 10000 or number > 10000000:
+        print("Error: winsize must ranges from 10k-10M")
+        exit()
+
 # Load arguments
 path = '/'.join(sys.argv[0].split('/')[:-1])
 species1 = sys.argv[1]
@@ -34,7 +40,16 @@ if os.path.isdir('./'+prefix):
     # Exit the script with warning message.
     sys.exit('Please, change directory or delete directory '+prefix)
 
-print('Loading...')
+# winsize check
+try:
+    input_number = int(winsize)
+except ValueError:
+    print("Error: invalid winsize input, integer required")
+    exit()
+else:
+    check_integer(input_number)
+
+print('Checking complete, Loading...')
 
 # Copy temporary directory to current path
 shutil.copytree(path+'/tmp/', './'+prefix)
