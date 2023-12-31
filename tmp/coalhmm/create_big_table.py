@@ -48,7 +48,8 @@ target_seqname = sys.argv[1]
 
 slice_lst = pickle.load(open('../slice_lst.pickle', 'rb'))
 
-store = pd.HDFStore('../final_table.HDF', complib='blosc')
+# store = pd.HDFStore('../final_table.HDF', complib='blosc')
+df_concat = pd.DataFrame()
 
 for run in range(len(slice_lst)):
     # Load the info table with the coordinates and the gap information
@@ -56,7 +57,10 @@ for run in range(len(slice_lst)):
     df = pd.read_hdf('../results/run_{}.HDF'.format(run))
     df = df[[target_seqname.split('.')[0],'V0','V1','V2','V3']]
     df = optimize_dataframe(df)
-    store.append(key=target_seqname.replace('.', '_'),value=df,
-    format='t',data_columns=[target_seqname.split('.')[0]],complevel=9)
+    df_concat = pd.concat([df_concat, df], ignore_index=True)
+#    store.append(key=target_seqname.replace('.', '_'),value=df,
+#    format='t',data_columns=[target_seqname.split('.')[0]],complevel=9)
 
-store.close()
+#store.close()
+df_concat.to_csv('final_table.csv', index=False)
+

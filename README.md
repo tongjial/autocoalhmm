@@ -41,7 +41,7 @@ The workflow steps are executed as follows:
 3. The filtering workflow will finish by executing the testing workflow, which will:
 		1. take a sample from the slicing of the filtered maf file (1st, 2nd and 3rd quantile).
 		2. generate the necessary files for running coalHMM and mapping the result back to the coordinate system. 
-		3. run coalHMM on three windows with default starting params.
+		3. run coalHMM on three sample windows with default starting params.
 		4. compute the mean of the estimated params and save them into new param file.
 4. The testing workflow will finish by executing the coalHMM workflow, which will:
 		1. split the filtered maf file into the slices computed before
