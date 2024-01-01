@@ -103,7 +103,7 @@ python retrieve_params.py
 
 gwf.target('send_coalhmm', 
             inputs=['../params.file'], 
-            outputs=['../final_table.HDF'],
+            outputs=['../final_table.csv'],
             cores=2,
             memory='4g',
             walltime= '96:00:00',
