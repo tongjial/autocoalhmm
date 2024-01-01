@@ -62,5 +62,5 @@ for run in range(len(slice_lst)):
 #    format='t',data_columns=[target_seqname.split('.')[0]],complevel=9)
 
 #store.close()
-df_concat.to_csv('final_table.csv', index=False)
+df_concat.to_csv('../final_table.csv', index=False)
 
