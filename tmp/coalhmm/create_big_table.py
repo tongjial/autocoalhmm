@@ -52,12 +52,15 @@ slice_lst = pickle.load(open('../slice_lst.pickle', 'rb'))
 df_concat = pd.DataFrame()
 
 for run in range(len(slice_lst)):
-    # Load the info table with the coordinates and the gap information
-    # info_table = pd.read_csv('../info_tables/run_{}.csv'.format(run))
-    df = pd.read_hdf('../results/run_{}.HDF'.format(run))
-    df = df[[target_seqname.split('.')[0],'V0','V1','V2','V3']]
-    df = optimize_dataframe(df)
-    df_concat = pd.concat([df_concat, df], ignore_index=True)
+    if os.path.exists('../results/run_{}.HDF'.format(run)):
+        # Load the info table with the coordinates and the gap information
+        # info_table = pd.read_csv('../info_tables/run_{}.csv'.format(run))
+        df = pd.read_hdf('../results/run_{}.HDF'.format(run))
+        df = df[[target_seqname.split('.')[0],'V0','V1','V2','V3']]
+        df = optimize_dataframe(df)
+        df_concat = pd.concat([df_concat, df], ignore_index=True)
+    else:
+        print(f"File 'run_{run}.HDF' does not exist. Skipping.")
 #    store.append(key=target_seqname.replace('.', '_'),value=df,
 #    format='t',data_columns=[target_seqname.split('.')[0]],complevel=9)
 
